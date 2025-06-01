@@ -1,0 +1,42 @@
+{
+  "text.autoconfig.servereye.title": "Server Eye 配置",
+
+  "text.autoconfig.servereye.option.base": "基础配置",
+  "text.autoconfig.servereye.option.base.defaultLanguage": "默认语言",
+  "text.autoconfig.servereye.option.base.defaultLanguage.@Tooltip": "设置界面默认显示的语言",
+
+  "text.autoconfig.servereye.option.chat": "聊天信息设置",
+  "text.autoconfig.servereye.option.chat.sensitiveWords": "敏感词列表",
+  "text.autoconfig.servereye.option.chat.sensitiveWords.@Tooltip": "填写需屏蔽的敏感词",
+  "text.autoconfig.servereye.option.chat.enableSensitiveWordFilter": "启用聊天敏感词过滤",
+  "text.autoconfig.servereye.option.chat.enableSensitiveWordFilter.@Tooltip": "开启后，包含敏感词的聊天信息将不会上传",
+
+  "text.autoconfig.servereye.option.web": "本地 Web 配置",
+  "text.autoconfig.servereye.option.web.enableLocalWebInterface": "启用本地 Web 界面",
+  "text.autoconfig.servereye.option.web.enableLocalWebInterface.@Tooltip": "开启后可通过浏览器访问本地 Web 页面，查看数据可视化（支持远程上传同时开启）",
+  "text.autoconfig.servereye.option.web.webServerPort": "本地 Web 服务器端口",
+  "text.autoconfig.servereye.option.web.webServerPort.@Tooltip": "使用浏览器访问：http://localhost:端口号",
+  "text.autoconfig.servereye.option.web.saveToLocalFiles": "保存数据到本地文件",
+  "text.autoconfig.servereye.option.web.saveToLocalFiles.@Tooltip": "开启后，数据会以 JSON 文件形式保存在 servereye_data 文件夹中",
+
+  "text.autoconfig.servereye.option.upload": "远程上传配置",
+  "text.autoconfig.servereye.option.upload.uploadUrl": "远程上传地址 URL",
+  "text.autoconfig.servereye.option.upload.uploadUrl.@Tooltip": "配置数据上传的远程服务器地址（可与本地 Web 同时启用）",
+  "text.autoconfig.servereye.option.upload.enableRemoteUpload": "启用远程上传",
+  "text.autoconfig.servereye.option.upload.enableRemoteUpload.@Tooltip": "开启后数据将上传到远程服务器",
+  "text.autoconfig.servereye.option.upload.uploadTimeoutSeconds": "上传超时时间（秒）",
+  "text.autoconfig.servereye.option.upload.uploadTimeoutSeconds.@Tooltip": "设置数据上传的超时时长",
+
+  "text.autoconfig.servereye.option.cleanup": "自动清理设置",
+  "text.autoconfig.servereye.option.cleanup.enableAutoCleanup": "启用自动清理",
+  "text.autoconfig.servereye.option.cleanup.enableAutoCleanup.@Tooltip": "开启后将定期清理过期缓存与本地文件",
+  "text.autoconfig.servereye.option.cleanup.maxCacheSize": "最大缓存大小",
+  "text.autoconfig.servereye.option.cleanup.maxCacheSize.@Tooltip": "缓存列表最多允许的事件数量，超出后将移除最旧数据",
+  "text.autoconfig.servereye.option.cleanup.cleanupIntervalHours": "自动清理间隔（小时）",
+  "text.autoconfig.servereye.option.cleanup.cleanupIntervalHours.@Tooltip": "自动清理操作的时间间隔，单位为小时",
+  "text.autoconfig.servereye.option.cleanup.maxEventAgeDays": "最大事件保留时间（天）",
+  "text.autoconfig.servereye.option.cleanup.maxEventAgeDays.@Tooltip": "超出该时间的事件将被自动删除",
+  "text.autoconfig.servereye.option.cleanup.cleanupLocalFiles": "清理本地保存文件",
+  "text.autoconfig.servereye.option.cleanup.cleanupLocalFiles.@Tooltip": "开启后将一并删除本地保存的旧事件文件"
+
+}

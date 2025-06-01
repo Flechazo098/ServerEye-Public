@@ -1,0 +1,41 @@
+{
+  "text.autoconfig.servereye.title": "Server Eye 設定",
+
+  "text.autoconfig.servereye.option.base": "基本設定",
+  "text.autoconfig.servereye.option.base.defaultLanguage": "デフォルト言語",
+  "text.autoconfig.servereye.option.base.defaultLanguage.@Tooltip": "インターフェースのデフォルト言語を設定します",
+
+  "text.autoconfig.servereye.option.chat": "チャット設定",
+  "text.autoconfig.servereye.option.chat.sensitiveWords": "禁止語リスト",
+  "text.autoconfig.servereye.option.chat.sensitiveWords.@Tooltip": "チャットから除外する禁止語を入力してください",
+  "text.autoconfig.servereye.option.chat.enableSensitiveWordFilter": "禁止語フィルターを有効にする",
+  "text.autoconfig.servereye.option.chat.enableSensitiveWordFilter.@Tooltip": "有効にすると、禁止語を含むチャットメッセージはアップロードされません",
+
+  "text.autoconfig.servereye.option.web": "ローカル Web 設定",
+  "text.autoconfig.servereye.option.web.enableLocalWebInterface": "ローカル Web インターフェースを有効にする",
+  "text.autoconfig.servereye.option.web.enableLocalWebInterface.@Tooltip": "ブラウザでローカルの Web ページにアクセスしてデータの可視化ができます（リモートアップロードと同時に有効にできます）",
+  "text.autoconfig.servereye.option.web.webServerPort": "ローカル Web サーバーポート",
+  "text.autoconfig.servereye.option.web.webServerPort.@Tooltip": "ブラウザでアクセス：http://localhost:[ポート番号]",
+  "text.autoconfig.servereye.option.web.saveToLocalFiles": "データをローカルファイルに保存",
+  "text.autoconfig.servereye.option.web.saveToLocalFiles.@Tooltip": "有効にすると、データが servereye_data フォルダに JSON ファイル形式で保存されます",
+
+  "text.autoconfig.servereye.option.upload": "リモートアップロード設定",
+  "text.autoconfig.servereye.option.upload.uploadUrl": "リモートアップロード URL",
+  "text.autoconfig.servereye.option.upload.uploadUrl.@Tooltip": "データをアップロードするリモートサーバーの URL を設定します（ローカル Web と同時に有効にできます）",
+  "text.autoconfig.servereye.option.upload.enableRemoteUpload": "リモートアップロードを有効にする",
+  "text.autoconfig.servereye.option.upload.enableRemoteUpload.@Tooltip": "有効にすると、データはリモートサーバーにアップロードされます",
+  "text.autoconfig.servereye.option.upload.uploadTimeoutSeconds": "アップロードタイムアウト（秒）",
+  "text.autoconfig.servereye.option.upload.uploadTimeoutSeconds.@Tooltip": "データアップロードのタイムアウト時間を設定します",
+
+  "text.autoconfig.servereye.option.cleanup": "自動クリーンアップ設定",
+  "text.autoconfig.servereye.option.cleanup.enableAutoCleanup": "自動クリーンアップを有効化",
+  "text.autoconfig.servereye.option.cleanup.enableAutoCleanup.@Tooltip": "有効にすると、期限切れのキャッシュやローカルファイルが定期的に削除されます",
+  "text.autoconfig.servereye.option.cleanup.maxCacheSize": "最大キャッシュ数",
+  "text.autoconfig.servereye.option.cleanup.maxCacheSize.@Tooltip": "キャッシュ内に保持できるイベントの最大数。超過すると最も古いものから削除されます",
+  "text.autoconfig.servereye.option.cleanup.cleanupIntervalHours": "自動クリーンアップ間隔（時間）",
+  "text.autoconfig.servereye.option.cleanup.cleanupIntervalHours.@Tooltip": "自動クリーンアップの実行間隔（時間単位）を設定します",
+  "text.autoconfig.servereye.option.cleanup.maxEventAgeDays": "イベント保持期間（日）",
+  "text.autoconfig.servereye.option.cleanup.maxEventAgeDays.@Tooltip": "この日数を超えたイベントは自動的に削除されます",
+  "text.autoconfig.servereye.option.cleanup.cleanupLocalFiles": "ローカルファイルのクリーンアップ",
+  "text.autoconfig.servereye.option.cleanup.cleanupLocalFiles.@Tooltip": "有効にすると、ローカルに保存された古いイベントファイルも削除されます"
+}

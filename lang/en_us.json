@@ -1,0 +1,41 @@
+{
+  "text.autoconfig.servereye.title": "Server Eye Configuration",
+
+  "text.autoconfig.servereye.option.base": "Basic Settings",
+  "text.autoconfig.servereye.option.base.defaultLanguage": "Default Language",
+  "text.autoconfig.servereye.option.base.defaultLanguage.@Tooltip": "Set the default language for the interface",
+
+  "text.autoconfig.servereye.option.chat": "Chat Settings",
+  "text.autoconfig.servereye.option.chat.sensitiveWords": "Sensitive Words List",
+  "text.autoconfig.servereye.option.chat.sensitiveWords.@Tooltip": "Enter words to be filtered from chat",
+  "text.autoconfig.servereye.option.chat.enableSensitiveWordFilter": "Enable Sensitive Words Filter",
+  "text.autoconfig.servereye.option.chat.enableSensitiveWordFilter.@Tooltip": "If enabled, chat messages containing sensitive words will not be uploaded",
+
+  "text.autoconfig.servereye.option.web": "Local Web Settings",
+  "text.autoconfig.servereye.option.web.enableLocalWebInterface": "Enable Local Web Interface",
+  "text.autoconfig.servereye.option.web.enableLocalWebInterface.@Tooltip": "Allows access to a local web page via browser for data visualization (can be enabled with remote upload)",
+  "text.autoconfig.servereye.option.web.webServerPort": "Local Web Server Port",
+  "text.autoconfig.servereye.option.web.webServerPort.@Tooltip": "Access via browser: http://localhost:[port]",
+  "text.autoconfig.servereye.option.web.saveToLocalFiles": "Save Data to Local Files",
+  "text.autoconfig.servereye.option.web.saveToLocalFiles.@Tooltip": "When enabled, data will be saved as JSON files in the servereye_data folder",
+
+  "text.autoconfig.servereye.option.upload": "Remote Upload Settings",
+  "text.autoconfig.servereye.option.upload.uploadUrl": "Remote Upload URL",
+  "text.autoconfig.servereye.option.upload.uploadUrl.@Tooltip": "Configure the remote server URL to upload data (can be enabled alongside local web)",
+  "text.autoconfig.servereye.option.upload.enableRemoteUpload": "Enable Remote Upload",
+  "text.autoconfig.servereye.option.upload.enableRemoteUpload.@Tooltip": "When enabled, data will be uploaded to the remote server",
+  "text.autoconfig.servereye.option.upload.uploadTimeoutSeconds": "Upload Timeout (seconds)",
+  "text.autoconfig.servereye.option.upload.uploadTimeoutSeconds.@Tooltip": "Set the timeout duration for data uploads",
+
+  "text.autoconfig.servereye.option.cleanup": "Auto Cleanup Settings",
+  "text.autoconfig.servereye.option.cleanup.enableAutoCleanup": "Enable Auto Cleanup",
+  "text.autoconfig.servereye.option.cleanup.enableAutoCleanup.@Tooltip": "When enabled, expired cache and local files will be cleaned up automatically",
+  "text.autoconfig.servereye.option.cleanup.maxCacheSize": "Maximum Cache Size",
+  "text.autoconfig.servereye.option.cleanup.maxCacheSize.@Tooltip": "Maximum number of events allowed in memory cache. Oldest entries will be removed if exceeded",
+  "text.autoconfig.servereye.option.cleanup.cleanupIntervalHours": "Cleanup Interval (hours)",
+  "text.autoconfig.servereye.option.cleanup.cleanupIntervalHours.@Tooltip": "Time interval between automatic cleanup runs, in hours",
+  "text.autoconfig.servereye.option.cleanup.maxEventAgeDays": "Maximum Event Age (days)",
+  "text.autoconfig.servereye.option.cleanup.maxEventAgeDays.@Tooltip": "Events older than this age will be automatically removed",
+  "text.autoconfig.servereye.option.cleanup.cleanupLocalFiles": "Clean Up Local Files",
+  "text.autoconfig.servereye.option.cleanup.cleanupLocalFiles.@Tooltip": "When enabled, outdated event files stored on disk will also be deleted"
+}
