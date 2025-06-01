@@ -6,7 +6,7 @@
 
 [![Minecraft](https://img.shields.io/badge/Minecraft-1.21-brightgreen.svg)](https://www.minecraft.net/)
 [![Fabric](https://img.shields.io/badge/Mod%20Loader-Fabric-blue.svg)](https://fabricmc.net/)
-[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE.txt)
+[![License](https://img.shields.io/badge/License-All%20rights%20reserved-green.svg)](LICENSE.txt)
 
 ## 📝 项目介绍
 
@@ -84,11 +84,11 @@ https://your-server.example.com/api/receive
 
 ## 📜 许可证
 
-本项目采用MIT许可证，详情请参阅[LICENSE.txt](LICENSE.txt)文件。
+本项目许可归作者所有，详情请参阅[LICENSE.txt](LICENSE.txt)文件。
 
 ## 🤝 贡献
 
-欢迎提交问题报告和功能建议！如果你想为项目做出贡献，请遵循以下步骤：
+欢迎提交问题报告和功能建议！此仓库作为语言文件 PR 公共仓库，如果你想为项目做出贡献，请遵循以下步骤：
 
 1. Fork本仓库
 2. 创建你的特性分支 (`git checkout -b feature/amazing-feature`)
@@ -98,7 +98,8 @@ https://your-server.example.com/api/receive
 
 ## 📞 联系方式
 
-- 项目维护者：Flechazo [Gmail](mailto:flechazo09823@gmail.com) or [QQ](mailto:2558755403@qq.com)
+- 项目维护者: **Flechazo**  
+  [Gmail](mailto:flechazo09823@gmail.com) | [QQ](mailto:2558755403@qq.com)
  
 ---
 
