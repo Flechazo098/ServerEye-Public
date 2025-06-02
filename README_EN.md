@@ -2,7 +2,7 @@
 
 [![Minecraft](https://img.shields.io/badge/Minecraft-1.21-brightgreen.svg)](https://www.minecraft.net/)  
 [![Fabric](https://img.shields.io/badge/Mod%20Loader-Fabric-blue.svg)](https://fabricmc.net/)  
-[![License](https://img.shields.io/badge/License-All%20rights%20reserved-green.svg)](LICENSE.txt)
+[![License](https://img.shields.io/badge/License-All%20rights%20reserved-green.svg)](LICENSE)
 
 ## 📝 Project Overview
 
@@ -89,7 +89,7 @@ Here’s a sample of the event data structure:
 ## 📜 License
 
 All rights reserved by the author.  
-For details, please refer to the [LICENSE.txt](LICENSE.txt) file.
+For details, please refer to the [LICENSE.txt](LICENSE) file.
 
 ---
 

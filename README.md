@@ -1,12 +1,8 @@
-
-
-
-
 # ServerEye
 
 [![Minecraft](https://img.shields.io/badge/Minecraft-1.21-brightgreen.svg)](https://www.minecraft.net/)
 [![Fabric](https://img.shields.io/badge/Mod%20Loader-Fabric-blue.svg)](https://fabricmc.net/)
-[![License](https://img.shields.io/badge/License-All%20rights%20reserved-green.svg)](LICENSE.txt)
+[![License](https://img.shields.io/badge/License-All%20rights%20reserved-green.svg)](LICENSE)
 
 ## 📝 项目介绍
 
@@ -84,7 +80,7 @@ https://your-server.example.com/api/receive
 
 ## 📜 许可证
 
-本项目许可归作者所有，详情请参阅[LICENSE.txt](LICENSE.txt)文件。
+本项目许可归作者所有，详情请参阅[LICENSE.txt](LICENSE)文件。
 
 ## 🤝 贡献
 
