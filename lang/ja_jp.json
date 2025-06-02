@@ -37,5 +37,25 @@
   "text.autoconfig.servereye.option.cleanup.maxEventAgeDays": "イベント保持期間（日）",
   "text.autoconfig.servereye.option.cleanup.maxEventAgeDays.@Tooltip": "この日数を超えたイベントは自動的に削除されます",
   "text.autoconfig.servereye.option.cleanup.cleanupLocalFiles": "ローカルファイルのクリーンアップ",
-  "text.autoconfig.servereye.option.cleanup.cleanupLocalFiles.@Tooltip": "有効にすると、ローカルに保存された古いイベントファイルも削除されます"
+  "text.autoconfig.servereye.option.cleanup.cleanupLocalFiles.@Tooltip": "有効にすると、ローカルに保存された古いイベントファイルも削除されます",
+
+  "servereye.event.gamemode": "ゲームモード",
+  "servereye.event.dimension": "ディメンション",
+  "servereye.event.online_time": "オンライン時間",
+  "servereye.event.block": "ブロック",
+  "servereye.event.coordinates": "座標",
+  "servereye.event.message_content": "メッセージ内容",
+  "servereye.event.word_count": "文字数",
+  "servereye.event.command": "コマンド",
+  "servereye.event.parameters": "パラメーター",
+  "servereye.event.parameter_count": "パラメーター数",
+  "servereye.event.no_parameters": "なし",
+  "servereye.event.feedback_messages": "フィードバックメッセージ",
+  "servereye.event.feedback_count": "フィードバック数",
+  "servereye.event.execution_time_ms": "実行時間（ミリ秒）",
+  "servereye.event.gamemode_change": "ゲームモード変更",
+  "servereye.event.previous_gamemode": "変更前のモード",
+  "servereye.event.new_gamemode": "変更後のモード",
+  "servereye.event.time_format": "%d時間%d分%d秒",
+  "servereye.event.coordinates_format": "X: %d, Y: %d, Z: %d"
 }

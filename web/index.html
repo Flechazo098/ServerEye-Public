@@ -22,12 +22,20 @@
         <div class="nav-container">
             <div class="nav-brand">
                 <img src="image/icon.png" alt="ServerEye" class="nav-logo">
-                <span class="nav-title">ServerEye</span>
+                <span class="nav-title" data-i18n="nav.title">ServerEye</span>
             </div>
-            <div class="nav-status">
-                <div class="status-indicator" id="connectionIndicator">
-                    <div class="status-dot"></div>
-                    <span id="connectionStatus">连接中...</span>
+            <div class="nav-controls">
+                <div class="language-selector">
+                    <select id="languageSelect" class="language-select">
+                        <option value="zh">中文</option>
+                        <option value="en">English</option>
+                    </select>
+                </div>
+                <div class="nav-status">
+                    <div class="status-indicator" id="connectionIndicator">
+                        <div class="status-dot"></div>
+                        <span id="connectionStatus" data-i18n="nav.connecting">连接中...</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -38,22 +46,22 @@
         <div class="hero-container">
             <div class="hero-content">
                 <h1 class="hero-title">
-                    <span class="title-main">实时监控</span>
-                    <span class="title-sub">玩家行为分析</span>
+                    <span class="title-main" data-i18n="hero.title_main">实时监控</span>
+                    <span class="title-sub" data-i18n="hero.title_sub">玩家行为分析</span>
                 </h1>
-                <p class="hero-description">现代化的Minecraft服务器监控解决方案</p>
+                <p class="hero-description" data-i18n="hero.description">现代化的Minecraft服务器监控解决方案</p>
                 <div class="hero-actions">
                     <button id="refreshBtn" class="btn btn-primary">
                         <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                             <path d="M23 4v6h-6M1 20v-6h6M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.64A9 9 0 0 1 3.51 15"/>
                         </svg>
-                        刷新数据
+                        <span data-i18n="hero.refresh_btn">刷新数据</span>
                     </button>
                     <button id="cleanupBtn" class="btn btn-secondary">
                         <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                             <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
                         </svg>
-                        清理数据
+                        <span data-i18n="hero.cleanup_btn">清理数据</span>
                     </button>
                 </div>
             </div>
@@ -65,29 +73,29 @@
         <section class="control-panel">
             <div class="glass-card">
                 <div class="card-header">
-                    <h3>筛选控制</h3>
+                    <h3 data-i18n="controls.filter_title">筛选控制</h3>
                 </div>
                 <div class="control-grid">
                     <div class="control-group">
-                        <label for="eventFilter">事件类型</label>
+                        <label for="eventFilter" data-i18n="controls.event_type">事件类型</label>
                         <select id="eventFilter" class="modern-select">
-                            <option value="all">所有事件</option>
-                            <option value="player_join">玩家加入</option>
-                            <option value="player_leave">玩家离开</option>
-                            <option value="block_break">破坏方块</option>
-                            <option value="block_place">放置方块</option>
-                            <option value="chat_message">聊天消息</option>
-                            <option value="gamemode_change">游戏模式变更</option>
-                            <option value="command_execution">执行命令</option>
+                            <option value="all" data-i18n="event_types.all">所有事件</option>
+                            <option value="player_join" data-i18n="event_types.player_join">玩家加入</option>
+                            <option value="player_leave" data-i18n="event_types.player_leave">玩家离开</option>
+                            <option value="block_break" data-i18n="event_types.block_break">破坏方块</option>
+                            <option value="block_place" data-i18n="event_types.block_place">放置方块</option>
+                            <option value="chat_message" data-i18n="event_types.chat_message">聊天消息</option>
+                            <option value="gamemode_change" data-i18n="event_types.gamemode_change">游戏模式变更</option>
+                            <option value="command_execution" data-i18n="event_types.command_execution">执行命令</option>
                         </select>
                     </div>
                     <div class="control-group">
-                        <label for="playerFilter">玩家筛选</label>
-                        <input type="text" id="playerFilter" class="modern-input" placeholder="输入玩家名称...">
+                        <label for="playerFilter" data-i18n="controls.player_filter">玩家筛选</label>
+                        <input type="text" id="playerFilter" class="modern-input" data-i18n-placeholder="controls.player_placeholder" placeholder="输入玩家名称...">
                     </div>
                     <div class="control-actions">
-                        <button id="clearFilterBtn" class="btn btn-ghost">清除筛选</button>
-                        <button id="exportBtn" class="btn btn-ghost">导出数据</button>
+                        <button id="clearFilterBtn" class="btn btn-ghost" data-i18n="controls.clear_filter">清除筛选</button>
+                        <button id="exportBtn" class="btn btn-ghost" data-i18n="controls.export_data">导出数据</button>
                     </div>
                 </div>
             </div>
@@ -103,12 +111,10 @@
                         </svg>
                     </div>
                     <div class="stat-content">
-                        <h3>总事件数</h3>
-                        <p class="stat-number" id="totalEvents">0</p>
-                        <span class="stat-label">累计记录</span>
+                        <h3 data-i18n="stats.total_events">总事件数</h3>
+                        <div class="stat-value" id="totalEvents">0</div>
                     </div>
                 </div>
-                
                 <div class="stat-card" data-stat="players">
                     <div class="stat-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -116,12 +122,10 @@
                         </svg>
                     </div>
                     <div class="stat-content">
-                        <h3>活跃玩家</h3>
-                        <p class="stat-number" id="activePlayers">0</p>
-                        <span class="stat-label">在线用户</span>
+                        <h3 data-i18n="stats.active_players">活跃玩家</h3>
+                        <div class="stat-value" id="activePlayers">0</div>
                     </div>
                 </div>
-                
                 <div class="stat-card" data-stat="blocks">
                     <div class="stat-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -129,12 +133,10 @@
                         </svg>
                     </div>
                     <div class="stat-content">
-                        <h3>破坏方块</h3>
-                        <p class="stat-number" id="blocksBroken">0</p>
-                        <span class="stat-label">方块操作</span>
+                        <h3 data-i18n="stats.blocks_broken">破坏方块</h3>
+                        <div class="stat-value" id="blocksBroken">0</div>
                     </div>
                 </div>
-                
                 <div class="stat-card" data-stat="chat">
                     <div class="stat-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -142,22 +144,31 @@
                         </svg>
                     </div>
                     <div class="stat-content">
-                        <h3>聊天消息</h3>
-                        <p class="stat-number" id="chatMessages">0</p>
-                        <span class="stat-label">消息数量</span>
+                        <h3 data-i18n="stats.chat_messages">聊天消息</h3>
+                        <div class="stat-value" id="chatMessages">0</div>
                     </div>
                 </div>
-                
-                <div class="stat-card stat-card-wide" data-stat="cache">
+                <div class="stat-card" data-stat="cache">
                     <div class="stat-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                            <path d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"/>
                         </svg>
                     </div>
                     <div class="stat-content">
-                        <h3>缓存状态</h3>
-                        <p class="stat-status" id="cacheStatus">加载中...</p>
-                        <span class="stat-details" id="cacheDetails"></span>
+                        <h3 data-i18n="stats.cache_status">缓存状态</h3>
+                        <div class="stat-value" id="cacheStatus">-</div>
+                        <div class="stat-details" id="cacheDetails"></div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                        </svg>
+                    </div>
+                    <div class="stat-content">
+                        <h3 data-i18n="stats.last_update">最后更新</h3>
+                        <div class="stat-value" id="lastUpdate">-</div>
                     </div>
                 </div>
             </div>
@@ -167,10 +178,7 @@
         <section class="events-section">
             <div class="glass-card">
                 <div class="card-header">
-                    <h3>事件列表</h3>
-                    <div class="header-actions">
-                        <span class="last-update" id="lastUpdate">最后更新: 从未</span>
-                    </div>
+                    <h3 data-i18n="events.title">事件列表</h3>
                 </div>
                 <div class="events-container">
                     <div id="eventsList" class="events-list"></div>
@@ -179,29 +187,26 @@
         </section>
     </main>
 
-    <!-- 清理模态框 -->
+    <!-- 清理确认模态框 -->
     <div id="cleanupModal" class="modal">
         <div class="modal-backdrop"></div>
         <div class="modal-content">
             <div class="modal-header">
-                <h3>数据清理</h3>
-                <button class="modal-close" aria-label="关闭">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <line x1="18" y1="6" x2="6" y2="18"></line>
-                        <line x1="6" y1="6" x2="18" y2="18"></line>
-                    </svg>
-                </button>
+                <h3 data-i18n="cleanup.modal_title">数据清理</h3>
+                <button class="modal-close">&times;</button>
             </div>
             <div class="modal-body">
-                <div id="cleanupStatus" class="cleanup-status">正在执行清理...</div>
-                <div class="progress-container">
-                    <div class="progress-bar">
-                        <div class="progress-fill"></div>
-                    </div>
-                </div>
+                <p data-i18n="cleanup.confirm_message">确定要清理所有缓存数据吗？此操作不可撤销。</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-ghost modal-close" data-i18n="cleanup.cancel">取消</button>
+                <button id="confirmCleanupBtn" class="btn btn-danger" data-i18n="cleanup.confirm">确认清理</button>
             </div>
         </div>
     </div>
+
+    <!-- 通知容器 -->
+    <div id="notificationContainer" class="notification-container"></div>
 
     <script src="script.js"></script>
 </body>

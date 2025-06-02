@@ -37,5 +37,25 @@
   "text.autoconfig.servereye.option.cleanup.maxEventAgeDays": "Maximum Event Age (days)",
   "text.autoconfig.servereye.option.cleanup.maxEventAgeDays.@Tooltip": "Events older than this age will be automatically removed",
   "text.autoconfig.servereye.option.cleanup.cleanupLocalFiles": "Clean Up Local Files",
-  "text.autoconfig.servereye.option.cleanup.cleanupLocalFiles.@Tooltip": "When enabled, outdated event files stored on disk will also be deleted"
+  "text.autoconfig.servereye.option.cleanup.cleanupLocalFiles.@Tooltip": "When enabled, outdated event files stored on disk will also be deleted",
+
+  "servereye.event.gamemode": "Game Mode",
+  "servereye.event.dimension": "Dimension",
+  "servereye.event.online_time": "Online Time",
+  "servereye.event.block": "Block",
+  "servereye.event.coordinates": "Coordinates",
+  "servereye.event.message_content": "Message Content",
+  "servereye.event.word_count": "Word Count",
+  "servereye.event.command": "Command",
+  "servereye.event.parameters": "Parameters",
+  "servereye.event.parameter_count": "Parameter Count",
+  "servereye.event.no_parameters": "None",
+  "servereye.event.feedback_messages": "Feedback Messages",
+  "servereye.event.feedback_count": "Feedback Count",
+  "servereye.event.execution_time_ms": "Execution Time (ms)",
+  "servereye.event.gamemode_change": "Game Mode Change",
+  "servereye.event.previous_gamemode": "Previous Game Mode",
+  "servereye.event.new_gamemode": "New Game Mode",
+  "servereye.event.time_format": "%d hours %d minutes %d seconds",
+  "servereye.event.coordinates_format": "X: %d, Y: %d, Z: %d"
 }

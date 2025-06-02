@@ -1,0 +1,92 @@
+{
+  "nav": {
+    "title": "ServerEye",
+    "connecting": "连接中...",
+    "connected": "已连接",
+    "disconnected": "连接断开"
+  },
+  "hero": {
+    "title_main": "实时监控",
+    "title_sub": "玩家行为分析",
+    "description": "现代化的Minecraft服务器监控解决方案",
+    "refresh_btn": "刷新数据",
+    "cleanup_btn": "清理数据",
+    "refreshing": "刷新中..."
+  },
+  "controls": {
+    "filter_title": "筛选控制",
+    "event_type": "事件类型",
+    "player_filter": "玩家筛选",
+    "player_placeholder": "输入玩家名称...",
+    "clear_filter": "清除筛选",
+    "export_data": "导出数据",
+    "language": "语言"
+  },
+  "stats": {
+    "total_events": "总事件数",
+    "active_players": "活跃玩家",
+    "blocks_broken": "破坏方块",
+    "chat_messages": "聊天消息",
+    "cache_status": "缓存状态",
+    "last_update": "最后更新",
+    "status_last_update": "最后更新"
+  },
+  "events": {
+    "title": "事件列表",
+    "no_events": "暂无符合条件的事件",
+    "player": "玩家",
+    "time_ago": "前",
+    "just_now": "刚刚",
+    "minutes": "分钟",
+    "hours": "小时",
+    "days": "天"
+  },
+  "event_types": {
+    "all": "所有事件",
+    "player_join": "玩家加入",
+    "player_leave": "玩家离开",
+    "block_break": "破坏方块",
+    "block_place": "放置方块",
+    "chat_message": "聊天消息",
+    "gamemode_change": "游戏模式变更",
+    "command_execution": "执行命令"
+  },
+  "cleanup": {
+    "modal_title": "数据清理",
+    "confirm_message": "确定要清理所有缓存数据吗？此操作不可撤销。",
+    "cancel": "取消",
+    "confirm": "确认清理",
+    "success": "清理完成",
+    "error": "清理失败",
+    "status_good": "良好",
+    "status_warning": "警告",
+    "status_critical": "严重"
+  },
+  "event_details": {
+    "command": "命令",
+    "parameters": "参数",
+    "parameter_count": "参数数量",
+    "feedback_messages": "反馈消息",
+    "feedback_count": "反馈数量",
+    "dimension": "维度",
+    "coordinates": "坐标",
+    "block": "方块",
+    "gamemode": "游戏模式",
+    "previous_gamemode": "变更前的游戏模式",
+    "new_gamemode": "变更后的游戏模式",
+    "message_content": "消息内容",
+    "online_time": "在线时长",
+    "word_count": "字数统计",
+    "execution_time_ms": "执行时间 (毫秒)",
+    "gamemode_change": "游戏模式变更",
+    "no_parameters": "无参数"
+  },
+  "messages": {
+    "fetch_error": "获取数据失败",
+    "cleanup_success": "数据清理成功",
+    "cleanup_error": "数据清理失败",
+    "export_success": "数据导出成功",
+    "connection_lost": "连接丢失",
+    "connection_restored": "连接已恢复"
+  }
+}

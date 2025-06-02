@@ -1,0 +1,92 @@
+{
+  "nav": {
+    "title": "ServerEye",
+    "connecting": "Connecting...",
+    "connected": "Connected",
+    "disconnected": "Disconnected"
+  },
+  "hero": {
+    "title_main": "Real-time Monitoring",
+    "title_sub": "Player Behavior Analysis",
+    "description": "Modern Minecraft server monitoring solution",
+    "refresh_btn": "Refresh Data",
+    "cleanup_btn": "Clean Data",
+    "refreshing": "Refreshing..."
+  },
+  "controls": {
+    "filter_title": "Filter Controls",
+    "event_type": "Event Type",
+    "player_filter": "Player Filter",
+    "player_placeholder": "Enter player name...",
+    "clear_filter": "Clear Filter",
+    "export_data": "Export Data",
+    "language": "Language"
+  },
+  "stats": {
+    "total_events": "Total Events",
+    "active_players": "Active Players",
+    "blocks_broken": "Blocks Broken",
+    "chat_messages": "Chat Messages",
+    "cache_status": "Cache Status",
+    "last_update": "Last Update",
+    "status_last_update": "Last Update"
+  },
+  "events": {
+    "title": "Event List",
+    "no_events": "No events match the criteria",
+    "player": "Player",
+    "time_ago": "ago",
+    "just_now": "just now",
+    "minutes": "minutes",
+    "hours": "hours",
+    "days": "days"
+  },
+  "event_types": {
+    "all": "All Events",
+    "player_join": "Player Join",
+    "player_leave": "Player Leave",
+    "block_break": "Block Break",
+    "block_place": "Block Place",
+    "chat_message": "Chat Message",
+    "gamemode_change": "Gamemode Change",
+    "command_execution": "Command Execution"
+  },
+  "cleanup": {
+    "modal_title": "Data Cleanup",
+    "confirm_message": "Are you sure you want to clean all cached data? This action cannot be undone.",
+    "cancel": "Cancel",
+    "confirm": "Confirm Cleanup",
+    "success": "Cleanup Complete",
+    "error": "Cleanup Failed",
+    "status_good": "Good",
+    "status_warning": "Warning",
+    "status_critical": "Critical"
+  },
+  "event_details": {
+    "command": "Command",
+    "parameters": "Parameters",
+    "parameter_count": "Parameter Count",
+    "feedback_messages": "Feedback Messages",
+    "feedback_count": "Feedback Count",
+    "dimension": "Dimension",
+    "coordinates": "Coordinates",
+    "block": "Block",
+    "gamemode": "Game Mode",
+    "previous_gamemode": "Previous Game Mode",
+    "new_gamemode": "New Game Mode",
+    "message_content": "Message Content",
+    "online_time": "Online Time",
+    "word_count": "Word Count",
+    "execution_time_ms": "Execution Time (ms)",
+    "gamemode_change": "Game Mode Change",
+    "no_parameters": "No Parameters"
+  },
+  "messages": {
+    "fetch_error": "Failed to fetch data",
+    "cleanup_success": "Data cleanup successful",
+    "cleanup_error": "Data cleanup failed",
+    "export_success": "Data export successful",
+    "connection_lost": "Connection lost",
+    "connection_restored": "Connection restored"
+  }
+}

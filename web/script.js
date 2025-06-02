@@ -1,3 +1,99 @@
+// 多语言系统
+class I18n {
+    constructor() {
+        this.currentLanguage = localStorage.getItem('language') || 'zh';
+        this.translations = {};
+        this.loadLanguage(this.currentLanguage);
+    }
+
+    async loadLanguage(lang) {
+        try {
+            const response = await fetch(`lang/${lang}.json`);
+            if (!response.ok) {
+                throw new Error(`Failed to load language: ${lang}`);
+            }
+            this.translations = await response.json();
+            this.currentLanguage = lang;
+            localStorage.setItem('language', lang);
+            this.updateUI();
+            this.updateDocumentLanguage();
+        } catch (error) {
+            console.error('Failed to load language:', error);
+            // 如果加载失败，尝试加载默认语言
+            if (lang !== 'zh') {
+                this.loadLanguage('zh');
+            }
+        }
+    }
+
+    t(key, params = {}) {
+        const keys = key.split('.');
+        let value = this.translations;
+
+        for (const k of keys) {
+            if (value && typeof value === 'object' && k in value) {
+                value = value[k];
+            } else {
+                console.warn(`Translation key not found: ${key}`);
+                return key;
+            }
+        }
+
+        if (typeof value === 'string') {
+            // 支持参数替换
+            return value.replace(/\{\{(\w+)\}\}/g, (match, param) => {
+                return params[param] || match;
+            });
+        }
+
+        return key;
+    }
+
+    updateUI() {
+        // 更新所有带有 data-i18n 属性的元素
+        document.querySelectorAll('[data-i18n]').forEach(element => {
+            const key = element.getAttribute('data-i18n');
+            const translation = this.t(key);
+
+            if (element.tagName === 'INPUT' && element.type === 'text') {
+                // 对于输入框，更新placeholder
+                if (element.hasAttribute('data-i18n-placeholder')) {
+                    const placeholderKey = element.getAttribute('data-i18n-placeholder');
+                    element.placeholder = this.t(placeholderKey);
+                }
+            } else {
+                element.textContent = translation;
+            }
+        });
+
+        // 更新placeholder属性
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+            const key = element.getAttribute('data-i18n-placeholder');
+            element.placeholder = this.t(key);
+        });
+
+        // 更新页面标题
+        document.title = `${this.t('nav.title')} - ${this.t('hero.description')}`;
+    }
+
+    updateDocumentLanguage() {
+        document.documentElement.lang = this.currentLanguage === 'zh' ? 'zh-CN' : 'en';
+    }
+
+    setLanguage(lang) {
+        if (lang !== this.currentLanguage) {
+            this.loadLanguage(lang);
+        }
+    }
+
+    getCurrentLanguage() {
+        return this.currentLanguage;
+    }
+}
+
+// 创建全局i18n实例
+const i18n = new I18n();
+
 // 全局变量
 let allEvents = [];
 let filteredEvents = [];
@@ -25,6 +121,7 @@ const connectionStatusEl = document.getElementById('connectionStatus');
 const connectionIndicator = document.getElementById('connectionIndicator');
 const lastUpdateEl = document.getElementById('lastUpdate');
 const cleanupModal = document.getElementById('cleanupModal');
+const languageSelect = document.getElementById('languageSelect');
 
 // 初始化
 document.addEventListener('DOMContentLoaded', () => {
@@ -32,7 +129,21 @@ document.addEventListener('DOMContentLoaded', () => {
     setupEventListeners();
     startPeriodicUpdates();
     addScrollAnimations();
+    initializeLanguage();
 });
+
+// 语言初始化
+function initializeLanguage() {
+    // 设置语言选择器的当前值
+    languageSelect.value = i18n.getCurrentLanguage();
+
+    // 添加语言切换事件监听器
+    languageSelect.addEventListener('change', (e) => {
+        const newLang = e.target.value;
+        localStorage.setItem('language', newLang); // 提前保存
+        location.reload(); // 直接刷新页面
+    });
+}
 
 // 应用初始化
 function initializeApp() {
@@ -102,9 +213,9 @@ function handleRefresh() {
         <svg class="btn-icon animate-spin" viewBox="0 0 24 24" fill="none" stroke="currentColor">
             <path d="M23 4v6h-6M1 20v-6h6M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.64A9 9 0 0 1 3.51 15"/>
         </svg>
-        刷新中...
+        ${i18n.t('hero.refreshing')}
     `;
-    
+
     Promise.all([fetchEvents(), fetchCleanupStatus()])
         .finally(() => {
             setTimeout(() => {
@@ -113,7 +224,7 @@ function handleRefresh() {
                     <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                         <path d="M23 4v6h-6M1 20v-6h6M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.64A9 9 0 0 1 3.51 15"/>
                     </svg>
-                    刷新数据
+                    <span>${i18n.t('hero.refresh_btn')}</span>
                 `;
             }, 500);
         });
@@ -126,21 +237,21 @@ async function fetchEvents() {
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
-        
+
         allEvents = await response.json();
         allEvents.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
-        
+
         updateStats();
         filterEvents();
         updateConnectionStatus(true);
         updateLastUpdateTime();
-        
+
         // 添加新事件动画
         animateNewEvents();
     } catch (error) {
         console.error('获取事件数据失败:', error);
         updateConnectionStatus(false);
-        showNotification('获取数据失败', 'error');
+        showNotification(i18n.t('messages.fetch_error'), 'error');
     }
 }
 
@@ -151,12 +262,12 @@ async function fetchCleanupStatus() {
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
-        
+
         cleanupStatus = await response.json();
         updateCleanupDisplay();
     } catch (error) {
         console.error('获取清理状态失败:', error);
-        cacheStatusEl.textContent = '获取失败';
+        cacheStatusEl.textContent = i18n.t('messages.fetch_error');
         cacheDetailsEl.textContent = '';
     }
 }
@@ -267,7 +378,7 @@ function filterByStatType(statType) {
 // 渲染事件列表
 function renderEvents() {
     if (filteredEvents.length === 0) {
-        eventsList.innerHTML = '<div class="no-events">暂无符合条件的事件</div>';
+        eventsList.innerHTML = `<div class="no-events">${i18n.t('events.no_events')}</div>`;
         return;
     }
 
@@ -284,7 +395,7 @@ function renderEvents() {
                         <span class="event-relative-time">${relativeTime}</span>
                     </div>
                 </div>
-                ${event.player ? `<div class="event-player">玩家: ${event.player}</div>` : ''}
+                ${event.player ? `<div class="event-player">${i18n.t('events.player')}: ${event.player}</div>` : ''}
                 <div class="event-details">${formatEventDetails(event)}</div>
             </div>
         `;
@@ -293,39 +404,130 @@ function renderEvents() {
 
 // 获取事件类型名称
 function getEventTypeName(type) {
-    const typeNames = {
-        'player_join': '玩家加入',
-        'player_leave': '玩家离开',
-        'block_break': '破坏方块',
-        'block_place': '放置方块',
-        'chat_message': '聊天消息',
-        'gamemode_change': '游戏模式变更',
-        'command_execution': '执行命令'
-    };
-    return typeNames[type] || type;
+    return i18n.t(`event_types.${type}`) || type;
 }
 
 // 格式化事件详情
 function formatEventDetails(event) {
-    if (typeof event.details === 'object') {
-        return JSON.stringify(event.details, null, 2);
+    if (!event.details || typeof event.details !== 'object') {
+        return event.details || i18n.t('event_details.none');
     }
-    return event.details || '无详细信息';
+
+    const details = event.details;
+    let formattedDetails = '';
+
+    // 定义字段映射关系
+    const fieldMappings = {
+        'Command': 'command',                     // 命令
+        'Parameters': 'parameters',               // 参数
+        'Parameter Count': 'parameter_count',     // 参数数量
+        'Feedback Messages': 'feedback_messages',// 反馈消息
+        'Feedback Count': 'feedback_count',      // 反馈数量
+        'Dimension': 'dimension',                 // 维度
+        'Coordinates': 'coordinates',             // 坐标
+        'Block': 'block',                         // 方块
+        'Game Mode': 'gamemode',                  // 游戏模式
+        'Previous Game Mode': 'previous_gamemode',// 变更前的游戏模式
+        'New Game Mode': 'new_gamemode',          // 变更后的游戏模式
+        'Message Content': 'message_content',     // 消息内容
+        'Online Time': 'online_time',             // 在线时长
+        'Word Count': 'word_count',               // 字数统计
+        'Execution Time (ms)': 'execution_time_ms',// 执行时间（毫秒）
+        'Game Mode Change': 'gamemode_change',    // 游戏模式变更
+        'No Parameters': 'no_parameters'          // 无参数
+    };
+
+    // 遍历事件详情对象
+    for (const [key, value] of Object.entries(details)) {
+        // 获取翻译键
+        const translationKey = fieldMappings[key] || key.toLowerCase().replace(/\s+/g, '_');
+
+        // 获取翻译后的字段名
+        const translatedKey = i18n.t(`event_details.${translationKey}`) || key;
+
+        // 格式化值
+        let formattedValue = formatValue(value);
+
+        formattedDetails += `<div class="detail-item"><strong>${translatedKey}:</strong> ${formattedValue}</div>`;
+    }
+
+    return formattedDetails || i18n.t('event_details.none');
+}
+
+// 新增：格式化值的辅助函数
+function formatValue(value) {
+    if (value === null || value === undefined || value === '') {
+        return i18n.t('event_details.none');
+    }
+
+    if (Array.isArray(value)) {
+        if (value.length === 0) {
+            return i18n.t('event_details.none');
+        }
+        // 处理数组中的每个元素
+        const formattedItems = value.map(item => {
+            if (typeof item === 'object' && item !== null) {
+                return formatObjectValue(item);
+            }
+            return String(item);
+        });
+        return formattedItems.join('<br>');
+    }
+
+    if (typeof value === 'object' && value !== null) {
+        return formatObjectValue(value);
+    }
+
+    return String(value).replace(/\n/g, '<br>');
+}
+
+// 新增：格式化对象值的辅助函数
+function formatObjectValue(obj) {
+    if (obj === null || obj === undefined) {
+        return i18n.t('event_details.none');
+    }
+
+    // 如果对象有 toString 方法且不是默认的 [object Object]
+    const stringValue = obj.toString();
+    if (stringValue !== '[object Object]') {
+        return stringValue;
+    }
+
+    // 尝试格式化为键值对
+    const entries = Object.entries(obj);
+    if (entries.length === 0) {
+        return i18n.t('event_details.none');
+    }
+
+    // 如果对象比较简单（少于等于3个属性），显示为内联格式
+    if (entries.length <= 3) {
+        return entries.map(([k, v]) => `${k}: ${formatValue(v)}`).join(', ');
+    }
+
+    // 如果对象比较复杂，显示为多行格式
+    const formattedEntries = entries.map(([k, v]) => {
+        return `&nbsp;&nbsp;${k}: ${formatValue(v)}`;
+    });
+    return formattedEntries.join('<br>');
 }
 
 // 获取相对时间
 function getRelativeTime(date) {
     const now = new Date();
-    const diff = now - date;
-    const seconds = Math.floor(diff / 1000);
-    const minutes = Math.floor(seconds / 60);
-    const hours = Math.floor(minutes / 60);
-    const days = Math.floor(hours / 24);
-    
-    if (days > 0) return `${days}天前`;
-    if (hours > 0) return `${hours}小时前`;
-    if (minutes > 0) return `${minutes}分钟前`;
-    return `${seconds}秒前`;
+    const diffInSeconds = Math.floor((now - date) / 1000);
+
+    if (diffInSeconds < 60) {
+        return i18n.t('events.just_now');
+    } else if (diffInSeconds < 3600) {
+        const minutes = Math.floor(diffInSeconds / 60);
+        return `${minutes} ${i18n.t('events.minutes')} ${i18n.t('events.time_ago')}`;
+    } else if (diffInSeconds < 86400) {
+        const hours = Math.floor(diffInSeconds / 3600);
+        return `${hours} ${i18n.t('events.hours')} ${i18n.t('events.time_ago')}`;
+    } else {
+        const days = Math.floor(diffInSeconds / 86400);
+        return `${days} ${i18n.t('events.days')} ${i18n.t('events.time_ago')}`;
+    }
 }
 
 // 清除过滤器
@@ -339,94 +541,65 @@ function clearFilters() {
 
 // 执行手动清理
 async function performManualCleanup() {
-    showModal();
-    
     try {
-        const response = await fetch('/api/cleanup', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-        
+        const response = await fetch('/api/cleanup', { method: 'POST' });
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
-        
+
         const result = await response.json();
-        
-        document.getElementById('cleanupStatus').innerHTML = `
-            <div class="success-message">
-                <h4>清理完成</h4>
-                <p>已清理 ${result.deletedCount || 0} 条记录</p>
-            </div>
-        `;
-        
-        setTimeout(() => {
-            closeModal();
-            fetchEvents();
-            fetchCleanupStatus();
-        }, 2000);
-        
+        if (result.success) {
+            showNotification(i18n.t('messages.cleanup_success'), 'success');
+            fetchCleanupStatus(); // 重新获取清理状态
+        } else {
+            throw new Error(result.message || 'Cleanup failed');
+        }
     } catch (error) {
         console.error('清理失败:', error);
-        document.getElementById('cleanupStatus').innerHTML = `
-            <div class="error-message">
-                <h4>清理失败</h4>
-                <p>${error.message}</p>
-            </div>
-        `;
-        
-        setTimeout(closeModal, 3000);
+        showNotification(i18n.t('messages.cleanup_error'), 'error');
     }
 }
 
 // 更新清理状态显示
 function updateCleanupDisplay() {
     if (!cleanupStatus) return;
-    
-    const { cacheSize, maxCacheSize, status } = cleanupStatus;
-    const percentage = maxCacheSize > 0 ? (cacheSize / maxCacheSize * 100).toFixed(1) : 0;
-    
-    let statusClass = 'status-good';
-    let statusText = '正常';
-    
-    if (percentage > 80) {
-        statusClass = 'status-critical';
-        statusText = '需要清理';
-    } else if (percentage > 60) {
+
+    const { cacheSize, maxCacheSize } = cleanupStatus;
+    const percentage = maxCacheSize > 0 ? (cacheSize / maxCacheSize) * 100 : 0;
+
+    let statusText, statusClass;
+    if (percentage < 50) {
+        statusText = i18n.t('cleanup.status_good');
+        statusClass = 'status-good';
+    } else if (percentage < 80) {
+        statusText = i18n.t('cleanup.status_warning');
         statusClass = 'status-warning';
-        statusText = '注意';
+    } else {
+        statusText = i18n.t('cleanup.status_critical');
+        statusClass = 'status-critical';
     }
 
     cacheStatusEl.textContent = statusText;
-    cacheStatusEl.className = `stat-status ${statusClass}`;
-    
-    if (cacheDetailsEl) {
-        cacheDetailsEl.textContent = `${cacheSize}/${maxCacheSize} (${percentage}%)`;
-    }
+    cacheStatusEl.className = `stat-value ${statusClass}`;
+    cacheDetailsEl.textContent = `${cacheSize}/${maxCacheSize} (${percentage.toFixed(1)}%)`;
 }
 
+
 // 更新连接状态
-function updateConnectionStatus(online) {
-    connectionOnline = online;
-    const statusDot = document.querySelector('.status-dot');
-    const statusText = connectionStatusEl;
-    
-    if (online) {
-        statusDot?.classList.remove('offline');
-        if (statusText) statusText.textContent = '已连接';
-    } else {
-        statusDot?.classList.add('offline');
-        if (statusText) statusText.textContent = '连接断开';
-    }
+function updateConnectionStatus(isOnline) {
+    connectionOnline = isOnline;
+    const statusText = isOnline ? i18n.t('nav.connected') : i18n.t('nav.disconnected');
+    const statusClass = isOnline ? 'connected' : 'disconnected';
+
+    connectionStatusEl.textContent = statusText;
+    connectionIndicator.className = `status-indicator ${statusClass}`;
 }
 
 // 更新最后更新时间
 function updateLastUpdateTime() {
     const now = new Date();
     if (lastUpdateEl) {
-        lastUpdateEl.textContent = `最后更新: ${now.toLocaleTimeString()}`;
+        lastUpdateEl.textContent = `${i18n.t('stats.status_last_update')}: ${now.toLocaleTimeString()}`;
     }
 }
 
@@ -483,31 +656,20 @@ function exportData() {
 
 // 显示通知
 function showNotification(message, type = 'info') {
-    // 创建通知元素
     const notification = document.createElement('div');
     notification.className = `notification notification-${type}`;
-    notification.innerHTML = `
-        <div class="notification-content">
-            <span class="notification-message">${message}</span>
-            <button class="notification-close" onclick="this.parentElement.parentElement.remove()">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                </svg>
-            </button>
-        </div>
-    `;
-    
-    // 添加到页面
-    document.body.appendChild(notification);
-    
-    // 动画显示
+    notification.textContent = message;
+
+    const container = document.getElementById('notificationContainer');
+    container.appendChild(notification);
+
+    // 显示动画
     setTimeout(() => notification.classList.add('show'), 100);
-    
-    // 自动移除
+
+    // 自动隐藏
     setTimeout(() => {
         notification.classList.remove('show');
-        setTimeout(() => notification.remove(), 300);
+        setTimeout(() => container.removeChild(notification), 300);
     }, 3000);
 }
 

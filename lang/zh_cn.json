@@ -37,6 +37,25 @@
   "text.autoconfig.servereye.option.cleanup.maxEventAgeDays": "最大事件保留时间（天）",
   "text.autoconfig.servereye.option.cleanup.maxEventAgeDays.@Tooltip": "超出该时间的事件将被自动删除",
   "text.autoconfig.servereye.option.cleanup.cleanupLocalFiles": "清理本地保存文件",
-  "text.autoconfig.servereye.option.cleanup.cleanupLocalFiles.@Tooltip": "开启后将一并删除本地保存的旧事件文件"
+  "text.autoconfig.servereye.option.cleanup.cleanupLocalFiles.@Tooltip": "开启后将一并删除本地保存的旧事件文件",
 
+  "servereye.event.gamemode": "游戏模式",
+  "servereye.event.dimension": "所在维度",
+  "servereye.event.online_time": "在线时长",
+  "servereye.event.block": "方块",
+  "servereye.event.coordinates": "坐标",
+  "servereye.event.message_content": "消息内容",
+  "servereye.event.word_count": "字数",
+  "servereye.event.command": "指令",
+  "servereye.event.parameters": "参数",
+  "servereye.event.parameter_count": "参数数量",
+  "servereye.event.no_parameters": "无",
+  "servereye.event.feedback_messages": "反馈消息",
+  "servereye.event.feedback_count": "反馈数量",
+  "servereye.event.execution_time_ms": "执行时长毫秒",
+  "servereye.event.gamemode_change": "游戏模式变更",
+  "servereye.event.previous_gamemode": "变更前的游戏模式",
+  "servereye.event.new_gamemode": "变更后的游戏模式",
+  "servereye.event.time_format": "%d小时%d分钟%d秒",
+  "servereye.event.coordinates_format": "X: %d, Y: %d, Z: %d"
 }
