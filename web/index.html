@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ServerEye - 玩家行为监控</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>ServerEye 玩家行为监控</h1>
+        <div class="controls">
+            <button id="refreshBtn">刷新数据</button>
+            <button id="cleanupBtn" class="cleanup-btn">手动清理</button>
+            <label for="eventFilter"></label><select id="eventFilter">
+                <option value="all">所有事件</option>
+                <option value="player_join">玩家加入</option>
+                <option value="player_leave">玩家离开</option>
+                <option value="block_break">破坏方块</option>
+                <option value="block_place">放置方块</option>
+                <option value="chat_message">聊天消息</option>
+                <option value="gamemode_change">游戏模式变更</option>
+                <option value="command_execution">执行命令</option>
+            </select>
+            <label for="playerFilter"></label><input type="text" id="playerFilter" placeholder="玩家名称过滤...">
+        </div>
+    </header>
+    
+    <main>
+        <div class="stats-container">
+            <div class="stat-card">
+                <h3>总事件数</h3>
+                <p id="totalEvents">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>活跃玩家</h3>
+                <p id="activePlayers">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>破坏方块数</h3>
+                <p id="blocksBroken">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>聊天消息数</h3>
+                <p id="chatMessages">0</p>
+            </div>
+            <div class="stat-card cleanup-status">
+                <h3>缓存状态</h3>
+                <p id="cacheStatus">加载中...</p>
+                <small id="cacheDetails"></small>
+            </div>
+        </div>
+        
+        <div class="events-container">
+            <div class="events-header">
+                <h2>事件列表</h2>
+                <div class="events-controls">
+                    <button id="clearFilterBtn" class="secondary-btn">清除过滤</button>
+                    <button id="exportBtn" class="secondary-btn">导出数据</button>
+                </div>
+            </div>
+            <div id="eventsList" class="events-list"></div>
+        </div>
+        
+        <!-- 清理状态模态框 -->
+        <div id="cleanupModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>数据清理</h3>
+                    <span class="close">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div id="cleanupStatus">正在执行清理...</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <p>ServerEye MOD - 实时监控玩家行为 &copy; 2023</p>
+        <p class="status-info">
+            <span id="connectionStatus">连接状态: 检查中...</span> | 
+            <span id="lastUpdate">最后更新: 从未</span>
+        </p>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>
